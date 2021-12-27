@@ -24,8 +24,9 @@ namespace NongSan.API.Domain.Generator
         }
         public override string Next([NotNullAttribute] EntityEntry entry)
         {
-            var lasVal = _shopDbContext.Entry(entry).Collections.LastOrDefault();
-            Console.WriteLine(lasVal.);
+            var lasVal = _shopDbContext.Entry(entry).Property("Id").CurrentValue;
+            //Console.WriteLine(lasVal.);
+            var a = _shopDbContext;
             return new Guid().ToString();
         }
     }

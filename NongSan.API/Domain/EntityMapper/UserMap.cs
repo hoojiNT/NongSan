@@ -13,9 +13,9 @@ namespace NongSan.API.Domain.EntityMapper
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(x => x.ID).HasName("UserId");
-            builder.Property(x => x.ID).ValueGeneratedOnAdd()
-                .HasColumnName("Id")
+            builder.HasKey(x => x.ID).HasName("pk_UserId");
+            builder.Property(x => x.ID)
+                .ValueGeneratedOnAdd()
                 .IsRequired();
 
             builder.Property(x => x.Name)
@@ -32,8 +32,7 @@ namespace NongSan.API.Domain.EntityMapper
                 .IsRequired();
 
             builder.Property(c => c.Gender)
-                .HasColumnType("BIT")
-                .HasDefaultValue(true);
+                .HasColumnType("BIT");
         }
     }
 }

@@ -10,7 +10,6 @@ namespace NongSan.API.Domain.EntityMapper
         {
             builder.HasKey(x => x.ID).HasName("pk_supplierid");
             builder.Property(x => x.ID)
-                .HasColumnName("SupplierID")
                 .ValueGeneratedOnAdd()
                 .IsRequired();
             builder.Property(x => x.Name)

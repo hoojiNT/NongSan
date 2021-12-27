@@ -10,7 +10,7 @@ namespace NongSan.API.Domain.EntityMapper
         {
             builder.HasKey(x => x.ID).HasName("pk_categoryid");
             builder.Property(x => x.ID)
-                .HasColumnName("CategoryID").ValueGeneratedOnAdd();
+                .ValueGeneratedOnAdd();
             builder.Property(x => x.Name)
                 .HasColumnName("CategoryName")
                 .HasColumnType("NVARCHAR(100)")

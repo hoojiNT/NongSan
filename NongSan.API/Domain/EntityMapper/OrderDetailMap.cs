@@ -9,7 +9,8 @@ namespace NongSan.API.Domain.EntityMapper
         public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {
             builder.HasKey(x => x.ID).HasName("pk_orderdetailid");
-            builder.Property(x => x.ProductID).HasColumnName("ProductID").ValueGeneratedOnAdd().IsRequired();
+            builder.Property(x => x.ID).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(x => x.ProductID).HasColumnName("ProductID");
             builder.Property(x => x.OrderID).HasColumnName("OrderID");
             builder.Property(x => x.Quantity).HasColumnName("Quantity");
             builder.HasOne(x=>x.Product).WithMany().HasForeignKey(k => k.ProductID);

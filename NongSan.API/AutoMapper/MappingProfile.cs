@@ -9,35 +9,25 @@ namespace NongSan.API.AutoMapper
         public MappingProfile()
         {
             //map supplier
-            CreateMap<Supplier, SupplierDTO>();
-            CreateMap<SupplierDTO, Supplier>();
+            CreateMap<Supplier, SupplierDTO>().ReverseMap();
             //map category
-            CreateMap<Category, CategoryDTO>();
-            CreateMap<CategoryDTO, Category>();
+            CreateMap<Category, CategoryDTO>().ReverseMap();
             //map order
-            CreateMap<Order, OrderDTO>();
-            CreateMap<OrderDTO, Order>();
+            CreateMap<Order, OrderDTO>().ReverseMap();
             //map OrderDetail
-            CreateMap<OrderDetail, OrderDetailDTO>();
-            CreateMap<OrderDetailDTO, OrderDetail>();
+            CreateMap<OrderDetail, OrderDetailDTO>().ReverseMap();
             //map Product
-            CreateMap<Product, ProductDTO>();
-            CreateMap<ProductDTO, Product>();
+            CreateMap<Product, ProductDTO>().ReverseMap();
             //map category
-            CreateMap<Category, CategoryDTO>();
-            CreateMap<CategoryDTO, Category>();
+            CreateMap<Category, CategoryDTO>().ReverseMap();
             //map contact
-            CreateMap<Contact, ContactDTO>();
-            CreateMap<ContactDTO, Contact>();   
+            CreateMap<Contact, ContactDTO>().ReverseMap();
             //map menu
-            CreateMap<Menu, MenuDTO>();
-            CreateMap<MenuDTO, Menu>(); 
+            CreateMap<Menu, MenuDTO>().ReverseMap();
             //map ProductImage
-            CreateMap<ProductImage, ProductImageDTO>();
-            CreateMap<ProductImageDTO, ProductImage>();
+            CreateMap<ProductImage, ProductImageDTO>().ReverseMap();
             //map ShoppingCart
-            CreateMap<ShoppingCart, ShoppingCartDTO>();
-            CreateMap<ShoppingCartDTO, ShoppingCart>();
+            CreateMap<ShoppingCart, ShoppingCartDTO>().ReverseMap();
         }
     }
 }
