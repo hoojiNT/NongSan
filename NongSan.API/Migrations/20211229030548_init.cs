@@ -50,7 +50,8 @@ namespace NongSan.API.Migrations
                 name: "Category",
                 columns: table => new
                 {
-                    CategoryID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(type: "NVARCHAR(100)", nullable: false),
                     Description = table.Column<string>(type: "NVARCHAR(1000)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -59,14 +60,15 @@ namespace NongSan.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_categoryid", x => x.CategoryID);
+                    table.PrimaryKey("pk_categoryid", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
-                    CustomerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -81,14 +83,15 @@ namespace NongSan.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("customerid_pk", x => x.CustomerId);
+                    table.PrimaryKey("customerid_pk", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Supplier",
                 columns: table => new
                 {
-                    SupplierID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(type: "Nvarchar(100)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -99,7 +102,7 @@ namespace NongSan.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_supplierid", x => x.SupplierID);
+                    table.PrimaryKey("pk_supplierid", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,7 +215,8 @@ namespace NongSan.API.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TotalMoney = table.Column<double>(type: "float", nullable: false),
                     Payment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -221,8 +225,8 @@ namespace NongSan.API.Migrations
                     State = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TransportFee = table.Column<double>(type: "float", nullable: false),
-                    CustomerID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    OrderDetailID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
+                    OrderDetailID = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -234,7 +238,7 @@ namespace NongSan.API.Migrations
                         name: "FK_Order_Customer_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customer",
-                        principalColumn: "CustomerId",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -242,7 +246,8 @@ namespace NongSan.API.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Price = table.Column<double>(type: "float", nullable: false),
                     OriginalPrice = table.Column<double>(type: "float", nullable: false),
                     IsDiscount = table.Column<bool>(type: "bit", nullable: false),
@@ -252,9 +257,9 @@ namespace NongSan.API.Migrations
                     DateManufacturingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SupplierID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    CategoryID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ProductImageID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SupplierID = table.Column<int>(type: "int", nullable: false),
+                    CategoryID = table.Column<int>(type: "int", nullable: false),
+                    ProductImageID = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
@@ -269,24 +274,24 @@ namespace NongSan.API.Migrations
                         name: "FK_Product_Category_CategoryID",
                         column: x => x.CategoryID,
                         principalTable: "Category",
-                        principalColumn: "CategoryID",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Product_Supplier_SupplierID",
                         column: x => x.SupplierID,
                         principalTable: "Supplier",
-                        principalColumn: "SupplierID",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderDetail",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProductID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    OrderID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    OrderID1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -298,12 +303,6 @@ namespace NongSan.API.Migrations
                     table.ForeignKey(
                         name: "FK_OrderDetail_Order_OrderID",
                         column: x => x.OrderID,
-                        principalTable: "Order",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_OrderDetail_Order_OrderID1",
-                        column: x => x.OrderID1,
                         principalTable: "Order",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -319,11 +318,11 @@ namespace NongSan.API.Migrations
                 name: "ProductImage",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsDefault = table.Column<bool>(type: "bit", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: false),
-                    ProductID1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
@@ -332,11 +331,11 @@ namespace NongSan.API.Migrations
                 {
                     table.PrimaryKey("PK_ProductImage", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ProductImage_Product_ProductID1",
-                        column: x => x.ProductID1,
+                        name: "FK_ProductImage_Product_ProductID",
+                        column: x => x.ProductID,
                         principalTable: "Product",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -389,11 +388,6 @@ namespace NongSan.API.Migrations
                 column: "OrderID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetail_OrderID1",
-                table: "OrderDetail",
-                column: "OrderID1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderDetail_ProductID",
                 table: "OrderDetail",
                 column: "ProductID");
@@ -409,9 +403,9 @@ namespace NongSan.API.Migrations
                 column: "SupplierID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductImage_ProductID1",
+                name: "IX_ProductImage_ProductID",
                 table: "ProductImage",
-                column: "ProductID1");
+                column: "ProductID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

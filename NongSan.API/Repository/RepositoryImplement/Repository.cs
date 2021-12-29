@@ -27,7 +27,7 @@ namespace NongSan.API.Repository
             context.SaveChanges();
         }
 
-        public T Get(string Id)
+        public T Get(int Id)
         {
             return entities.SingleOrDefault(x => x.ID == Id);
         }

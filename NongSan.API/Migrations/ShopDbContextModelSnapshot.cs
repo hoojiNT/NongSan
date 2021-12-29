@@ -217,9 +217,10 @@ namespace NongSan.API.Migrations
 
             modelBuilder.Entity("NongSan.API.Domain.Models.Category", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -246,9 +247,10 @@ namespace NongSan.API.Migrations
 
             modelBuilder.Entity("NongSan.API.Domain.Models.Customer", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -297,9 +299,10 @@ namespace NongSan.API.Migrations
 
             modelBuilder.Entity("NongSan.API.Domain.Models.Order", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
@@ -307,9 +310,8 @@ namespace NongSan.API.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CustomerID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
 
                     b.Property<string>("DeliveryData")
                         .HasColumnType("nvarchar(max)");
@@ -323,8 +325,8 @@ namespace NongSan.API.Migrations
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OrderDetailID")
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<int>("OrderDetailID")
+                        .HasColumnType("int")
                         .HasColumnName("OrderDetailID");
 
                     b.Property<string>("Payment")
@@ -352,9 +354,10 @@ namespace NongSan.API.Migrations
 
             modelBuilder.Entity("NongSan.API.Domain.Models.OrderDetail", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -365,15 +368,15 @@ namespace NongSan.API.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("OrderID")
-                        .HasColumnType("nvarchar(450)")
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int")
                         .HasColumnName("OrderID");
 
-                    b.Property<string>("OrderID1")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("OrderID1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ProductID")
-                        .HasColumnType("nvarchar(450)")
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int")
                         .HasColumnName("ProductID");
 
                     b.Property<int>("Quantity")
@@ -394,16 +397,17 @@ namespace NongSan.API.Migrations
 
             modelBuilder.Entity("NongSan.API.Domain.Models.Product", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("ID");
+                        .HasColumnType("int")
+                        .HasColumnName("ID")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CategoryID")
-                        .HasColumnType("nvarchar(450)")
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("int")
                         .HasColumnName("CategoryID");
 
                     b.Property<DateTime>("CreatedDate")
@@ -447,11 +451,11 @@ namespace NongSan.API.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("ProductImageID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProductImageID")
+                        .HasColumnType("int");
 
-                    b.Property<string>("SupplierID")
-                        .HasColumnType("nvarchar(450)")
+                    b.Property<int>("SupplierID")
+                        .HasColumnType("int")
                         .HasColumnName("SupplierID");
 
                     b.Property<int>("ViewCount")
@@ -469,8 +473,10 @@ namespace NongSan.API.Migrations
 
             modelBuilder.Entity("NongSan.API.Domain.Models.ProductImage", b =>
                 {
-                    b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -490,21 +496,19 @@ namespace NongSan.API.Migrations
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductID1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ID");
 
-                    b.HasIndex("ProductID1");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("ProductImage");
                 });
 
             modelBuilder.Entity("NongSan.API.Domain.Models.Supplier", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -601,7 +605,9 @@ namespace NongSan.API.Migrations
                 {
                     b.HasOne("NongSan.API.Domain.Models.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderID");
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("NongSan.API.Domain.Models.Order", null)
                         .WithMany("OrderDetails")
@@ -610,7 +616,9 @@ namespace NongSan.API.Migrations
 
                     b.HasOne("NongSan.API.Domain.Models.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Order");
 
@@ -622,12 +630,14 @@ namespace NongSan.API.Migrations
                     b.HasOne("NongSan.API.Domain.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("NongSan.API.Domain.Models.Supplier", "Supplier")
                         .WithMany("Products")
                         .HasForeignKey("SupplierID")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 
@@ -638,7 +648,9 @@ namespace NongSan.API.Migrations
                 {
                     b.HasOne("NongSan.API.Domain.Models.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductID1");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
                 });

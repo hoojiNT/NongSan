@@ -16,13 +16,13 @@ namespace NongSan.API.Domain.Models
         public string Description { get; set; }
 
 
-        public string SupplierID { get; set; }
+        public int SupplierID { get; set; }
         public virtual Supplier Supplier { get; set; }
 
-        public string CategoryID { get; set; }
+        public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
 
-        public string ProductImageID { get; set; }
+        public int ProductImageID { get; set; }
         public virtual List<ProductImage> ProductImages { get; set; }
     }
 }

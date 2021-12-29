@@ -10,9 +10,9 @@ namespace ServicesLayer.ProductService
     public interface IProductService
     {
         IEnumerable<Product> GetAllProducts();
-        Product GetProduct(string id);
+        Product GetProduct(int id);
         void InsertProduct(Product Product);
         void UpdateProduct(Product Product);
-        void DeleteProduct(string id);
+        void DeleteProduct(int id);
     }
 }

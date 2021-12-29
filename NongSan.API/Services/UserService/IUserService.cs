@@ -10,9 +10,9 @@ namespace ServicesLayer.UserService
     public interface IUserService
     {
         IEnumerable<User> GetAllUsers();
-        User GetUser(string id);
+        User GetUser(int id);
         void InsertUser(User User);
         void UpdateUser(User User);
-        void DeleteUser(string id);
+        void DeleteUser(int id);
     }
 }

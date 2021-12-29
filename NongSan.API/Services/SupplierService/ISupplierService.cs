@@ -10,9 +10,9 @@ namespace ServicesLayer.SupplierService
     public interface ISupplierService
     {
         IEnumerable<Supplier> GetAllSuppliers();
-        Supplier GetSupplier(string id);
+        Supplier GetSupplier(int id);
         void InsertSupplier(Supplier Supplier);
         void UpdateSupplier(Supplier Supplier);
-        void DeleteSupplier(string id);
+        void DeleteSupplier(int id);
     }
 }

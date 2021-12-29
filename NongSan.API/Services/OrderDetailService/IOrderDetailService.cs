@@ -10,9 +10,9 @@ namespace ServicesLayer.OrderDetailService
     public interface IOrderDetailService
     {
         IEnumerable<OrderDetail> GetAllOrderDetails();
-        OrderDetail GetOrderDetail(string id);
+        OrderDetail GetOrderDetail(int id);
         void InsertOrderDetail(OrderDetail OrderDetail);
         void UpdateOrderDetail(OrderDetail OrderDetail);
-        void DeleteOrderDetail(string id);
+        void DeleteOrderDetail(int id);
     }
 }

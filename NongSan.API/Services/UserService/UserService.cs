@@ -15,7 +15,7 @@ namespace ServicesLayer.UserService
         {
             this.repo = repo;
         }
-        public void DeleteUser(string id)
+        public void DeleteUser(int id)
         {
             User User = GetUser(id);
             repo.Delete(User);
@@ -26,7 +26,7 @@ namespace ServicesLayer.UserService
             return repo.GetAll();
         }
 
-        public User GetUser(string id)
+        public User GetUser(int id)
         {
             return repo.Get(id);
         }

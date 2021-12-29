@@ -4,6 +4,7 @@ using NongSan.API.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServicesLayer.SupplierService;
+using System.Collections.Generic;
 
 namespace NongSan.API.Controllers
 {
@@ -19,7 +20,7 @@ namespace NongSan.API.Controllers
             this._mapper = mapper;
         }
         [HttpGet(nameof(GetSupplier))]
-        public IActionResult GetSupplier(string id)
+        public IActionResult GetSupplier(int id)
         {
             var supplier = SupplierService.GetSupplier(id);
             var result = _mapper.Map<SupplierDTO>(supplier);
@@ -32,7 +33,7 @@ namespace NongSan.API.Controllers
         [HttpGet(nameof(GetAllSupplier))]
         public IActionResult GetAllSupplier()
         {
-            var result = SupplierService.GetAllSuppliers();
+            var result = _mapper.Map<List<SupplierDTO>>(SupplierService.GetAllSuppliers());
             if (result != null)
             {
                 return Ok(result);
@@ -54,7 +55,7 @@ namespace NongSan.API.Controllers
             return Ok("Update success!");
         }
         [HttpDelete(nameof(DeleteSupplier))]
-        public IActionResult DeleteSupplier(string id)
+        public IActionResult DeleteSupplier(int id)
         {
             SupplierService.DeleteSupplier(id);
             return Ok("Delete success!");

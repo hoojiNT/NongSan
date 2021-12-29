@@ -14,4 +14,6 @@ namespace NongSan.API.Domain.Models
         }
 
     }
+
+    public class Employee : BaseEntity { }
 }

@@ -15,7 +15,7 @@ namespace NongSan.Controllers
             this.OrderDetailService = OrderDetailService;
         }
         [HttpGet(nameof(GetOrderDetail))]
-        public IActionResult GetOrderDetail(string id)
+        public IActionResult GetOrderDetail(int id)
         {
             var result = OrderDetailService.GetOrderDetail(id);
             if (result != null)
@@ -47,7 +47,7 @@ namespace NongSan.Controllers
             return Ok("Update success!");
         }
         [HttpDelete(nameof(DeleteOrderDetail))]
-        public IActionResult DeleteOrderDetail(string id)
+        public IActionResult DeleteOrderDetail(int id)
         {
             OrderDetailService.DeleteOrderDetail(id);
             return Ok("Delete success!");

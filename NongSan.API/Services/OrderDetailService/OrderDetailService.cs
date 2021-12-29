@@ -15,7 +15,7 @@ namespace ServicesLayer.OrderDetailService
         {
             this.repo = repo;
         }
-        public void DeleteOrderDetail(string id)
+        public void DeleteOrderDetail(int id)
         {
             OrderDetail OrderDetail = GetOrderDetail(id);
             repo.Delete(OrderDetail);
@@ -26,7 +26,7 @@ namespace ServicesLayer.OrderDetailService
             return repo.GetAll();
         }
 
-        public OrderDetail GetOrderDetail(string id)
+        public OrderDetail GetOrderDetail(int id)
         {
             return repo.Get(id);
         }

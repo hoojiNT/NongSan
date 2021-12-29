@@ -15,7 +15,7 @@ namespace ServicesLayer.CustomerService
         {
             this.repo = repo;
         }
-        public void DeleteCustomer(string id)
+        public void DeleteCustomer(int id)
         {
             Customer customer = GetCustomer(id);
             repo.Delete(customer);
@@ -26,7 +26,7 @@ namespace ServicesLayer.CustomerService
             return repo.GetAll();
         }
 
-        public Customer GetCustomer(string id)
+        public Customer GetCustomer(int id)
         {
             return repo.Get(id);
         }

@@ -15,7 +15,7 @@ namespace NongSan.Controllers
             this.OrderService = OrderService;
         }
         [HttpGet(nameof(GetOrder))]
-        public IActionResult GetOrder(string id)
+        public IActionResult GetOrder(int id)
         {
             var result = OrderService.GetOrder(id);
             if (result != null)
@@ -47,7 +47,7 @@ namespace NongSan.Controllers
             return Ok("Update success!");
         }
         [HttpDelete(nameof(DeleteOrder))]
-        public IActionResult DeleteOrder(string id)
+        public IActionResult DeleteOrder(int id)
         {
             OrderService.DeleteOrder(id);
             return Ok("Delete success!");

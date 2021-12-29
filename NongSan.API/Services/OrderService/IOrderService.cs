@@ -10,9 +10,9 @@ namespace ServicesLayer.OrderService
     public interface IOrderService
     {
         IEnumerable<Order> GetAllOrders();
-        Order GetOrder(string id);
+        Order GetOrder(int id);
         void InsertOrder(Order Order);
         void UpdateOrder(Order Order);
-        void DeleteOrder(string id);
+        void DeleteOrder(int id);
     }
 }

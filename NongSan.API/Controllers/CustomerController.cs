@@ -15,7 +15,7 @@ namespace NongSan.Controllers
             this.customerService = customerService;
         }
         [HttpGet(nameof(GetCustomer))]
-        public IActionResult GetCustomer(string id)
+        public IActionResult GetCustomer(int id)
         {
             var result = customerService.GetCustomer(id);
             if (result != null)
@@ -47,7 +47,7 @@ namespace NongSan.Controllers
             return Ok("Update success!");
         }
         [HttpDelete(nameof(DeleteCustomer))]
-        public IActionResult DeleteCustomer(string id)
+        public IActionResult DeleteCustomer(int id)
         {
             customerService.DeleteCustomer(id);
             return Ok("Delete success!");

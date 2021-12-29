@@ -20,8 +20,8 @@ namespace NongSan.API.Domain.EntityMapper
                 .HasColumnName("CategoryID");
             builder.Property(x => x.SupplierID).HasColumnName("SupplierID");
 
-            builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(k => k.CategoryID).OnDelete(DeleteBehavior.SetNull);
-            builder.HasOne(x => x.Supplier).WithMany(x => x.Products).HasForeignKey(f => f.SupplierID).OnDelete(DeleteBehavior.SetNull);
+            builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(k => k.CategoryID).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Supplier).WithMany(x => x.Products).HasForeignKey(f => f.SupplierID).OnDelete(DeleteBehavior.Cascade);
         }
     }
 

@@ -10,9 +10,9 @@ namespace ServicesLayer.CustomerService
     public interface ICustomerService
     {
         IEnumerable<Customer> GetAllCustomers();
-        Customer GetCustomer(string id);
+        Customer GetCustomer(int id);
         void InsertCustomer(Customer customer);
         void UpdateCustomer(Customer customer);
-        void DeleteCustomer(string id);
+        void DeleteCustomer(int id);
     }
 }

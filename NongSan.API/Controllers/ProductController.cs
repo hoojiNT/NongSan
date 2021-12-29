@@ -15,7 +15,7 @@ namespace NongSan.Controllers
             this.ProductService = ProductService;
         }
         [HttpGet(nameof(GetProduct))]
-        public IActionResult GetProduct(string id)
+        public IActionResult GetProduct(int id)
         {
             var result = ProductService.GetProduct(id);
             if (result != null)
@@ -47,7 +47,7 @@ namespace NongSan.Controllers
             return Ok("Update success!");
         }
         [HttpDelete(nameof(DeleteProduct))]
-        public IActionResult DeleteProduct(string id)
+        public IActionResult DeleteProduct(int id)
         {
             ProductService.DeleteProduct(id);
             return Ok("Delete success!");

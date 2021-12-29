@@ -14,9 +14,9 @@ namespace NongSan.API.Domain.Models
         public string Note { get; set; }
         public double TransportFee { get; set; }
 
-        public string CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public Customer Customer { get; set; }
-        public string OrderDetailID { get; set; }
+        public int OrderDetailID { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

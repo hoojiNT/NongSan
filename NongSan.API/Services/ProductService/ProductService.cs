@@ -15,7 +15,7 @@ namespace ServicesLayer.ProductService
         {
             this.repo = repo;
         }
-        public void DeleteProduct(string id)
+        public void DeleteProduct(int id)
         {
             Product Product = GetProduct(id);
             repo.Delete(Product);
@@ -26,7 +26,7 @@ namespace ServicesLayer.ProductService
             return repo.GetAll();
         }
 
-        public Product GetProduct(string id)
+        public Product GetProduct(int id)
         {
             return repo.Get(id);
         }

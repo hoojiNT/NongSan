@@ -16,7 +16,7 @@ namespace ServicesLayer.SupplierService
         {
             this.repo = repo;
         }
-        public void DeleteSupplier(string id)
+        public void DeleteSupplier(int id)
         {
             Supplier Supplier = GetSupplier(id);
             repo.Delete(Supplier);
@@ -27,7 +27,7 @@ namespace ServicesLayer.SupplierService
             return repo.GetAll();
         }
 
-        public Supplier GetSupplier(string id)
+        public Supplier GetSupplier(int id)
         {
             return repo.Get(id);
         }

@@ -15,7 +15,7 @@ namespace NongSan.API.Controllers
             this.UserService = UserService;
         }
         [HttpGet(nameof(GetUser))]
-        public IActionResult GetUser(string id)
+        public IActionResult GetUser(int id)
         {
             var result = UserService.GetUser(id);
             if (result != null)
@@ -47,7 +47,7 @@ namespace NongSan.API.Controllers
             return Ok("Update success!");
         }
         [HttpDelete(nameof(DeleteUser))]
-        public IActionResult DeleteUser(string id)
+        public IActionResult DeleteUser(int id)
         {
             UserService.DeleteUser(id);
             return Ok("Delete success!");
