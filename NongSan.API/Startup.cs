@@ -84,7 +84,7 @@ namespace NongSan.API
             services.AddSingleton(mapper);
 
             services.AddDbContext<ShopDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("azureDbConn")));
+                options.UseSqlServer(Configuration.GetConnectionString("azureDb")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
